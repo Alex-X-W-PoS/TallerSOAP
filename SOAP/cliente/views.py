@@ -7,12 +7,13 @@ import zeep
 from xml.etree import ElementTree
 # Create your views here.
 def soap(request):
-	if request.method == 'POST':
-		wsdl = request.POST
+	dicti = {}
+	if request.method == 'GET':
+		wsdl = request.GET
 		client = zeep.Client(wsdl=wsdl)
 		xml_resp = (client.service.CurrentOilPrice('EN'))
 		root = ElementTree.fromstring(xml_resp)
-		dicti = {}
+
 		i = 1
 		for child in root:
 			dicti2 = {}
@@ -20,7 +21,10 @@ def soap(request):
 				dicti2[child2.tag]=child2.text
 			dicti[str(i)] = dicti2
 			i = i+1
-		return render(request, 'index/index.html', {'dict':dicti})
+		form = OilForm(instance=dicti)
+		return render(request, 'index/index.html', {'form':form})
+
+
 	
 
 def soap2(request):
