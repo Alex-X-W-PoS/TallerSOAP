@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from django.shortcuts import render
+from cliente.models import Oil
+from cliente.forms import OilForm
+from django.shortcuts import render, redirect
 import zeep
 from xml.etree import ElementTree
 # Create your views here.
@@ -19,7 +20,7 @@ def soap(request):
 				dicti2[child2.tag]=child2.text
 			dicti[str(i)] = dicti2
 			i = i+1
-		return render(request, '', {'dict':dicti})
+		return render(request, 'index/index.html', {'dict':dicti})
 	
 
 def soap2(request):
