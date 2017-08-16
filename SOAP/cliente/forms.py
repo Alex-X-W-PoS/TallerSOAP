@@ -8,7 +8,7 @@ class OilForm (forms.ModelForm):
         model = Oil
 
         fields = [
-            'nombre'
+            'nombre',
             'fecha_emision',
             'precio',
         ]
@@ -22,3 +22,13 @@ class OilForm (forms.ModelForm):
             'fecha_emision': forms.DateInput(),
             'precio': forms.NumberInput(),
         }
+
+class CurrentOilPrice (forms.Form):
+    lenguaje = forms.CharField(max_length = 2)
+
+class GetOilPrice (forms.Form):
+    lenguaje = forms.CharField(max_length = 2)
+    dia = forms.IntegerField()
+    mes = forms.IntegerField()
+    anio = forms.IntegerField()
+    

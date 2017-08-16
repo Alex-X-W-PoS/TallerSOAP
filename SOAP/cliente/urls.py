@@ -2,8 +2,8 @@ from django.conf.urls import include,url
 
 from . import views
 
-app_name = 'soap'
 urlpatterns = [
-    url(r'^$', views.soap, name="soap"),
-    url(r'^$', views.soap2, name="soap"),
+    url(r'^$', views.index, name= 'index'),
+    url(r'^currentOilPrice$', views.current, name = 'current'),
+    url(r'^getOilPrice$', views.getprice, name = 'getprice'),
 ]

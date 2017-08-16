@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practica SOAP</title>
+</head>
+<body>
+    <h1>SOAP Practice</h1>
+    {% for key, value in data %}
+        <p>Item {{ key }} </p> 
+		{% for llave, valor in value.items %}
+		<p>{{ llave }} = {{ valor }}</p>
+		{% endfor %}
+    
+	{% endfor %}
+</body>
+</html>
